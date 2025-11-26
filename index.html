@@ -16,128 +16,79 @@ background-color: lightblue;
 tw-story[tags~="Reflection"] {
 background-color: pink;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">(() => {
-  const GAS_URL = "https://twine-secure-endpoint.christiecadette.workers.dev/";
+  const WORKER_URL = "https://twine-secure-endpoint.christiecadette.workers.dev/";
 
-  // helper: get the current displayed passage name (try a few DOM heuristics)
-  function getCurrentPassageName() {
-    try {
-      // Harlowe renders the current passage as a <tw-passage> element in the story area.
-      const passageEl = document.querySelector("tw-story tw-passage, tw-passage");
-      if (passageEl) {
-        const name = passageEl.getAttribute && (passageEl.getAttribute("name") || passageEl.getAttribute("data-name"));
-        if (name) return name;
-        // fallback: use first heading / first line text as a passage identifier
-        const text = passageEl.textContent || "";
-        const firstLine = text.split("\n").map(s => s.trim()).find(Boolean);
-        return firstLine ? firstLine.slice(0, 80) : "unknown-passage";
+  // Build payload
+  function makePayload(choiceText, extra = {}) {
+    return {
+      timestamp: new Date().toISOString(),
+      passage: document.querySelector("tw-story tw-passage, tw-passage")?.getAttribute("name") || "unknown-passage",
+      choice: choiceText || null,
+      extra: {
+        url: location.href,
+        userAgent: navigator.userAgent,
+        ...extra
       }
-    } catch (err) {
-      /* ignore */
-    }
-    // final fallback: use the storydata startnode/pid if present
-    try {
-      const storydata = document.querySelector("tw-storydata");
-      if (storydata) {
-        const start = storydata.getAttribute("startnode");
-        if (start) return "pid-" + start;
-      }
-    } catch (err) {}
-    return "unknown-passage";
+    };
   }
 
-  // helper: assemble a payload and POST it to the GAS endpoint
-  async function postResponse(payload) {
-    if (!GAS_URL || GAS_URL.indexOf("YOUR_GAS_WEB_APP_URL_HERE") !== -1) {
-      console.warn("GAS_URL not configured in Story JavaScript. No POST made.");
-      return;
-    }
+  // Send JSON to Cloudflare Worker safely
+  async function postToWorker(payload) {
     try {
-      // send as JSON
-      const res = await fetch(GAS_URL, {
+      const res = await fetch(WORKER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-        mode: "cors",
+        mode: "cors"
       });
-      // optional: log response (remove or toggle for production)
-      const txt = await res.text();
-      console.log("sheet post result:", res.status, txt);
+
+      const text = await res.text(); // read response even on errors
+      if (!res.ok) {
+        console.error(`Worker POST failed: ${res.status}`, text);
+      } else {
+        console.log("Worker POST success:", text);
+      }
     } catch (err) {
-      console.error("Error posting to sheet:", err);
+      console.error("Error sending to Worker:", err);
     }
   }
 
-  // Build the standard payload format you want; extend as needed.
-  function makePayload(opts) {
-    // opts should contain at minimum {choiceText, passageName, extra}
-    const base = {
-      timestamp: new Date().toISOString(),
-      passage: opts.passageName || getCurrentPassageName(),
-      choice: opts.choiceText || null,
-      // add any extra fields here (player id, variables, score, etc.)
-      extra: opts.extra || null
-    };
-    return base;
-  }
-
-  // We capture clicks on two kinds of things:
-  //  - Harlowe's generated links (tw-link elements)
-  //  - ordinary HTML links with class="record-choice" or class="choice"
-  // The listener runs before navigation so we can capture the choice clicked.
-  document.addEventListener("click", function (ev) {
+  // Capture choice clicks
+  document.addEventListener("click", ev => {
     try {
-      // If the click is on a Harlowe link (tw-link element), find the anchor text
       let target = ev.target;
-      // ascend until we find a recognizable element or root
-      for (let i = 0; i < 6 && target && !target.classList; i++) {
-        if (target.matches && target.matches("tw-link, tw-link *")) break;
-        if (target.matches && (target.matches("a.record-choice") || target.matches("a.choice"))) break;
+      // Find the link element
+      for (let i = 0; i < 6 && target; i++) {
+        if (target.matches && (target.matches("tw-link, tw-link *") || target.matches("a.choice, a.record-choice"))) break;
         target = target.parentElement;
       }
       if (!target) return;
 
-      // If this is a tw-link or a clickable anchor we want to record
-      const isTwLink = target.closest && target.closest("tw-link");
-      const anchor = isTwLink ? target.closest("tw-link") : (target.matches && (target.matches("a.record-choice") || target.matches("a.choice")) ? target : null);
+      const anchor = target.closest ? target.closest("tw-link") || target : target;
+      if (!anchor) return;
 
-      if (!anchor) return; // not a link we care about
+      const choiceText = (anchor.textContent || "").trim() || anchor.getAttribute("title") || anchor.getAttribute("data-choice") || "unknown-choice";
 
-      // get the visible choice text
-      let choiceText = (anchor.textContent || "").trim();
-      // If it's empty, try to read title / data attributes
-      if (!choiceText) {
-        choiceText = anchor.getAttribute && (anchor.getAttribute("title") || anchor.getAttribute("data-choice") || "");
-      }
+      const payload = makePayload(choiceText);
 
-      const payload = makePayload({
-        choiceText,
-        passageName: getCurrentPassageName(),
-        // example extra data: you can add any JS values here (e.g. game variables)
-        extra: {
-          url: location.href,
-          userAgent: navigator.userAgent
-        }
-      });
-
-      // send asynchronously (fire-and-forget)
-      postResponse(payload);
-
-      // allow UI to continue normally — we do not preventDefault()
+      // Fire-and-forget, but logs errors
+      postToWorker(payload);
     } catch (err) {
-      console.error("Response-capture error:", err);
+      console.error("Error capturing choice:", err);
     }
-  }, { capture: true }); // capture: true tries to run before Harlowe handles navigation
+  }, { capture: true });
 
-  // Expose a programmatic API if you want to send arbitrary events from Twine code:
+  // Optional: programmatic API
   window.TwineToSheet = {
-    send: function (obj) { // obj should be plain object
-      const payload = makePayload(Object.assign({}, obj, { passageName: getCurrentPassageName() }));
-      postResponse(payload);
+    send: obj => {
+      const payload = makePayload(obj.choiceText || null, obj.extra || {});
+      postToWorker(payload);
     }
   };
 
-  console.log("Twine -> GoogleSheet recording script loaded.");
-})();</script><tw-tag name="Background" color="blue"></tw-tag><tw-tag name="Reflection" color="orange"></tw-tag><tw-passagedata pid="1" name="Adjust to the feedback and keep posting as you were" tags="Reflection" position="575,1250" size="100,100"></tw-passagedata><tw-passagedata pid="2" name="And this person have been chatting for a while, so you are down to meet up in person" tags="Reflection" position="700,1375" size="100,100"></tw-passagedata><tw-passagedata pid="3" name="Answer the question and ask them the same" tags="Background" position="825,1125" size="100,100">You and your friend start talking about more personal things, and they reach out to talk more frequently. 
+  console.log("Twine → Google Sheets recording script loaded.");
+})();
+</script><tw-tag name="Background" color="blue"></tw-tag><tw-tag name="Reflection" color="orange"></tw-tag><tw-passagedata pid="1" name="Adjust to the feedback and keep posting as you were" tags="Reflection" position="575,1250" size="100,100"></tw-passagedata><tw-passagedata pid="2" name="And this person have been chatting for a while, so you are down to meet up in person" tags="Reflection" position="700,1375" size="100,100"></tw-passagedata><tw-passagedata pid="3" name="Answer the question and ask them the same" tags="Background" position="825,1125" size="100,100">You and your friend start talking about more personal things, and they reach out to talk more frequently. 
 
 One day they ask, “heyy, would you be down to meet up?”
 
