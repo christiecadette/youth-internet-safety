@@ -104,9 +104,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Youth Internet Experience Study" startnode="24" creator="Twine" creator-version="2.10.0" format="SugarCube" format-version="2.37.3" ifid="39ACC828-7C48-4946-80DC-F0B17FEE9835" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* Paste into Story Stylesheet (SugarCube / Twine) */
-
-/* ============= Theme variables ============= */
+	<tw-storydata name="Youth Internet Experience Study" startnode="24" creator="Twine" creator-version="2.11.1" format="SugarCube" format-version="2.37.3" ifid="39ACC828-7C48-4946-80DC-F0B17FEE9835" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* ============= Theme variables ============= */
 :root{
   --bg: #f6f8fa;              /* page background */
   --surface: #ffffff;         /* passage card / panel */
@@ -141,7 +139,8 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 /* ============= Global layout ============= */
 html,body{
-  height:100%;
+  min-height:100vh;
+  height: auto;
   margin:0;
   background: linear-gradient(180deg,var(--bg), color-mix(in srgb, var(--bg) 92%, #ffffff 8%));
   color:var(--text);
@@ -151,6 +150,11 @@ html,body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   -webkit-tap-highlight-color: transparent;
+  background-attachment: fixed;
+}
+
+body{
+	overflow-y: auto;
 }
 
 /* Centered story column */
@@ -332,8 +336,19 @@ a.link-internal, .link-internal, button {
   margin-left: auto;
   margin-right: auto;
   border-radius: 15px;
-  width: 55%;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// disable back button 
+  max-width: 55%;
+  width: 100%;
+}
+
+.passage img,
+.center,
+.center_comment,
+.centerrounded {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">// disable back button 
 Config.history.controls = false;
 
 /* ============================================================
