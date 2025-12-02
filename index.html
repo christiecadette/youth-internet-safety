@@ -104,7 +104,9 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Youth Internet Experience Study" startnode="24" creator="Twine" creator-version="2.11.1" format="SugarCube" format-version="2.37.3" ifid="39ACC828-7C48-4946-80DC-F0B17FEE9835" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* ============= Theme variables ============= */
+	<tw-storydata name="Youth Internet Experience Study" startnode="24" creator="Twine" creator-version="2.10.0" format="SugarCube" format-version="2.37.3" ifid="39ACC828-7C48-4946-80DC-F0B17FEE9835" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* Paste into Story Stylesheet (SugarCube / Twine) */
+
+/* ============= Theme variables ============= */
 :root{
   --bg: #f6f8fa;              /* page background */
   --surface: #ffffff;         /* passage card / panel */
@@ -139,8 +141,7 @@ var LZString=function(){var r=String.fromCharCode,o="ABCDEFGHIJKLMNOPQRSTUVWXYZa
 
 /* ============= Global layout ============= */
 html,body{
-  min-height:100vh;
-  height: auto;
+  height:100%;
   margin:0;
   background: linear-gradient(180deg,var(--bg), color-mix(in srgb, var(--bg) 92%, #ffffff 8%));
   color:var(--text);
@@ -150,11 +151,6 @@ html,body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   -webkit-tap-highlight-color: transparent;
-  background-attachment: fixed;
-}
-
-body{
-	overflow-y: auto;
 }
 
 /* Centered story column */
@@ -336,19 +332,8 @@ a.link-internal, .link-internal, button {
   margin-left: auto;
   margin-right: auto;
   border-radius: 15px;
-  max-width: 55%;
-  width: 100%;
-}
-
-.passage img,
-.center,
-.center_comment,
-.centerrounded {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">// disable back button 
+  width: 55%;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">// disable back button 
 Config.history.controls = false;
 
 /* ============================================================
@@ -399,7 +384,27 @@ window.applyChoice = function (choiceText, points) {
         pointsAwarded: points,
         totalScore: State.variables.score
     });
-};</script><tw-tag name="Background" color="blue"></tw-tag><tw-tag name="Reflection" color="orange"></tw-tag><tw-passagedata pid="1" name="Adjust to the feedback and keep posting as you were" tags="Reflection" position="575,1250" size="100,100"></tw-passagedata><tw-passagedata pid="2" name="And this person have been chatting for a while, so you are down to meet up in person" tags="Reflection" position="700,1375" size="100,100"></tw-passagedata><tw-passagedata pid="3" name="Answer the question and ask them the same" tags="Background" position="825,1125" size="100,100">You and your friend start talking about more personal things, and they reach out to talk more frequently. 
+};</script><tw-tag name="Background" color="blue"></tw-tag><tw-tag name="Reflection" color="orange"></tw-tag><tw-passagedata pid="1" name="Adjust to the feedback and keep posting as you were" tags="Reflection" position="575,1250" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you decide to adjust to the feedback people left and keep posting as you were?&lt;/li&gt;
+  &lt;li&gt;Does this option make you feel safer?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+It can be helpful to take a break from social media every now and then to ground yourself. Deciding to stop using social media is a personal decision and should be based on how being on social media makes you feel. Does being on social media make you happy, do you feel a lot of pressure, do you feel like something is missing? Check-in with yourself to examine whether social media adds anything to your life and re-evaluate your relationship with it. Maybe deleting your account is the best course of action for you at this time, or perhaps it’s applying screen restrictions to limit the amount of time you spend on social media. There is no one right answer, so it can be helpful to talk to someone you trust to figure out what the best options for you may be. 
+
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="2" name="And this person have been chatting for a while, so you are down to meet up in person" tags="Reflection" position="700,1375" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you choose to meet them in person?&lt;/li&gt;
+  &lt;li&gt;How did you determine that you can trust meeting them in person?&lt;/li&gt;
+  &lt;li&gt;Would you tell someone in your life that you are planning to meet up with this person? Why or why not?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="3" name="Answer the question and ask them the same" tags="Background" position="825,1125" size="100,100">You and your friend start talking about more personal things, and they reach out to talk more frequently. 
 
 One day they ask, “heyy, would you be down to meet up?”
 
@@ -441,7 +446,18 @@ You ...
 &lt;&lt;link &quot;And this person have been chatting for a while, so you are down to meet up in person&quot;&gt;&gt;
     &lt;&lt;run applyChoice(&quot;And this person have been chatting for a while, so you are down to meet up in person&quot;, -1)&gt;&gt;
     &lt;&lt;goto &quot;And this person have been chatting for a while, so you are down to meet up in person&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Ask someone you trust what you should do" tags="Reflection" position="825,1250" size="100,100"></tw-passagedata><tw-passagedata pid="6" name="Avoid answering and steer the conversation back to school and hobbies" tags="Background" position="950,1125" size="100,100">The conversation about school about hobbies gets mundane and the friendship slowly dies off, and you don’t respond as much as you used to. You enjoyed talking to the person, but life is getting busier and don’t really think much of the friendship’s natural progression to an end.
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="Ask someone you trust what you should do" tags="Reflection" position="825,1250" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you decide to ask someone you trust what to do?&lt;/li&gt;
+  &lt;li&gt;Does this option make you feel safer?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+It’s fair to ignore negative comments aimed at hurting your feelings and carry on as you have been before. It is also ok to remove yourself from a person or platform that is making you feel uncomfortable or bad. It can be helpful to talk with someone you trust to get a better understanding of what’s happening and what steps you can take to ensure you are safe and content.
+
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="6" name="Avoid answering and steer the conversation back to school and hobbies" tags="Background" position="950,1125" size="100,100">The conversation about school about hobbies gets mundane and the friendship slowly dies off, and you don’t respond as much as you used to. You enjoyed talking to the person, but life is getting busier and don’t really think much of the friendship’s natural progression to an end.
 
 One day, you receive a comment on a video saying “So you can post videos but not hit me up lol” and you realize it&#39;s from your old friend. 
 &lt;img src=&quot;images/mean_comment1.png&quot; class=&quot;center_comment&quot;&gt;
@@ -463,7 +479,16 @@ Day after day, they keep coming.
 &lt;&lt;link &quot;Ask someone you trust what you should do&quot;&gt;&gt;
     &lt;&lt;run applyChoice(&quot;Ask someone you trust what you should do&quot;, 0)&gt;&gt;
     &lt;&lt;goto &quot;Ask someone you trust what you should do&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Avoid answering; steer the conversation back to normal topics" tags="Reflection" position="825,1375" size="100,100"></tw-passagedata><tw-passagedata pid="8" name="Continue posting more videos in pajamas" tags="Background" position="575,825" size="100,100">You decide to post more videos in your pajamas. One day, you receive a DM from someone saying ...
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="7" name="Avoid answering; steer the conversation back to normal topics" tags="Reflection" position="825,1375" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you want to avoid answering their question?&lt;/li&gt;
+  &lt;li&gt;How would you approach changing the conversation back to normal topics?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="8" name="Continue posting more videos in pajamas" tags="Background" position="575,825" size="100,100">You decide to post more videos in your pajamas. One day, you receive a DM from someone saying ...
 &lt;img src=&quot;images\first_dm.png&quot; class=&quot;centerrounded&quot;&gt;
 The person&#39;s profile pic looks like they are around your age. In their profile bio you see that they wrote the name of a school in your nearby area.
 
@@ -553,7 +578,50 @@ Would you like to ...
 &lt;&lt;link &quot;Post more videos in pajamas&quot;&gt;&gt;
 	&lt;&lt;run applyChoice(&quot;Post more videos in pajamas&quot;, -1)&gt;&gt;
     &lt;&lt;goto &quot;Post more videos in pajamas&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Deactivate your account" tags="Reflection" position="700,1250" size="100,100"></tw-passagedata><tw-passagedata pid="13" name="Delete your account" tags="Reflection" position="700,1125" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="Feel that in order to be comfortable accepting, you’d want to voice call first, so you ask if that’s okay" tags="Reflection" position="950,1375" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Figure out how to handle it yourself" tags="Reflection" position="1075,1250" size="100,100"></tw-passagedata><tw-passagedata pid="16" name="Ignore the comments and keep posting however you usually would" tags="Background" position="575,700" size="100,100">You choose to ignore the attention you get from wearing pajamas in your videos and continue to post as you usually would. On one of your videos you see the comments ...
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="Deactivate your account" tags="Reflection" position="700,1250" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you decide to deactivate your account?&lt;/li&gt;
+  &lt;li&gt;Does this option make you feel safer?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+It can be helpful to take a break from social media every now and then to ground yourself. Deciding to stop using social media is a personal decision and should be based on how being on social media makes you feel. Does being on social media make you happy, do you feel a lot of pressure, do you feel like something is missing? Check-in with yourself to examine whether social media adds anything to your life and re-evaluate your relationship with it. Maybe deleting your account is the best course of action for you at this time, or perhaps it’s applying screen restrictions to limit the amount of time you spend on social media. There is no one right answer, so it can be helpful to talk to someone you trust to figure out what the best options for you may be. 
+
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="13" name="Delete your account" tags="Reflection" position="700,1125" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you decide to delete your account?&lt;/li&gt;
+  &lt;li&gt;Does this option make you feel safer?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+It can be helpful to take a break from social media every now and then to ground yourself. Deciding to stop using social media is a personal decision and should be based on how being on social media makes you feel. Does being on social media make you happy, do you feel a lot of pressure, do you feel like something is missing? Check-in with yourself to examine whether social media adds anything to your life and re-evaluate your relationship with it. Maybe deleting your account is the best course of action for you at this time, or perhaps it’s applying screen restrictions to limit the amount of time you spend on social media. There is no one right answer, so it can be helpful to talk to someone you trust to figure out what the best options for you may be. 
+
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="14" name="Feel that in order to be comfortable accepting, you’d want to voice call first, so you ask if that’s okay" tags="Reflection" position="950,1375" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you choose to ask to voice call before meeting them in person?&lt;/li&gt;
+  &lt;li&gt;How would you determine whether you could trust meeting them in person?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="15" name="Figure out how to handle it yourself" tags="Reflection" position="1075,1250" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you decide to handle the situation yourself?&lt;/li&gt;
+  &lt;li&gt;What does it mean for you to handle the situation yourself? What would you do?&lt;/li&gt;
+  &lt;li&gt;Does this option make you feel safer?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+It’s fair to ignore negative comments aimed at hurting your feelings and carry on as you have been before. It is also ok to remove yourself from a person or platform that is making you feel uncomfortable or bad. It can be helpful to talk with someone you trust to get a better understanding of what’s happening and what steps you can take to ensure you are safe and content.
+
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="16" name="Ignore the comments and keep posting however you usually would" tags="Background" position="575,700" size="100,100">You choose to ignore the attention you get from wearing pajamas in your videos and continue to post as you usually would. On one of your videos you see the comments ...
 &lt;img src=&quot;images/pj_comments.png&quot; class=center_comment&gt;
 &lt;&lt;link &quot;Take your pajama videos down&quot;&gt;&gt;
 	&lt;&lt;run applyChoice(&quot;Take your pajama videos down&quot;, 2)&gt;&gt;
@@ -592,7 +660,18 @@ Would you like to ...
 &lt;&lt;link &quot;Write back, &#39;Thank you! Do you go to X school too?&#39;&quot;&gt;&gt;
     &lt;&lt;run applyChoice(&quot;Write back, &#39;Thank you! Do you go to X school too?&#39;&quot;, -1)&gt;&gt;
     &lt;&lt;goto &quot;Write back, &#39;Thank you! Do you go to X school too?&#39;&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Ignore the comments; they can’t keep at it forever" tags="Reflection" position="950,1250" size="100,100"></tw-passagedata><tw-passagedata pid="19" name="Ignore the message" tags="Background" position="700,1000" size="100,100">You decide to ignore the message and continue making your videos. 
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="Ignore the comments; they can’t keep at it forever" tags="Reflection" position="950,1250" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you decide to ignore the comments?&lt;/li&gt;
+  &lt;li&gt;Does this option make you feel safer?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+It’s fair to ignore negative comments aimed at hurting your feelings and carry on as you have been before. It is also ok to remove yourself from a person or platform that is making you feel uncomfortable or bad. It can be helpful to talk with someone you trust to get a better understanding of what’s happening and what steps you can take to ensure you are safe and content.
+
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="19" name="Ignore the message" tags="Background" position="700,1000" size="100,100">You decide to ignore the message and continue making your videos. 
 
 Your videos are doing well and your account is growing fast. The type of engagement you’re getting is changing as your account grows and are not all as supportive as when you started; people have started to comment negative things.
 
@@ -624,7 +703,18 @@ Would you like to ...
 &lt;&lt;link &quot;Adjust to receiving feedback and keep posting as you were&quot;&gt;&gt;
     &lt;&lt;run applyChoice(&quot;Adjust to receiving feedback and keep posting as you were&quot;, 0)&gt;&gt;
     &lt;&lt;goto &quot;Adjust to the feedback and keep posting as you were&quot;&gt;&gt;
-&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Make your account private so new people can&#39;t find it" tags="Reflection" position="450,1250" size="100,100"></tw-passagedata><tw-passagedata pid="21" name="Post more videos in pajamas" tags="Background" position="950,700" size="100,100">You decide to post more videos wearing pajamas. You receive a DM from someone saying ...
+&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="Make your account private so new people can&#39;t find it" tags="Reflection" position="450,1250" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you decide to make your account private so new people can’t find it?&lt;/li&gt;
+  &lt;li&gt;Does this option make you feel safer?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+It can be helpful to take a break from social media every now and then to ground yourself. Deciding to stop using social media is a personal decision and should be based on how being on social media makes you feel. Does being on social media make you happy, do you feel a lot of pressure, do you feel like something is missing? Check-in with yourself to examine whether social media adds anything to your life and re-evaluate your relationship with it. Maybe deleting your account is the best course of action for you at this time, or perhaps it’s applying screen restrictions to limit the amount of time you spend on social media. There is no one right answer, so it can be helpful to talk to someone you trust to figure out what the best options for you may be. 
+
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="21" name="Post more videos in pajamas" tags="Background" position="950,700" size="100,100">You decide to post more videos wearing pajamas. You receive a DM from someone saying ...
 &lt;img src=&quot;images\first_dm.png&quot; class=&quot;centerrounded&quot;&gt;
 The person&#39;s profile pic looks like they are around your age. In their profile bio you see that they wrote the name of a school in your nearby area.
 
@@ -698,7 +788,18 @@ What do you want to do next?
 &lt;&lt;/link&gt;&gt;
 
 &lt;&lt;set $score = 0&gt;&gt;
-&lt;&lt;set $playerID = window.playerID&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Take a break from posting videos" tags="Reflection" position="575,1125" size="100,100"></tw-passagedata><tw-passagedata pid="26" name="Take pajama videos down II" tags="Background" position="825,825" size="100,100">You decide to take down any videos in your pajamas. One day, you receive a DM from someone saying ...
+&lt;&lt;set $playerID = window.playerID&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="Take a break from posting videos" tags="Reflection" position="575,1125" size="100,100">&lt;b&gt;Reflection Questions:&lt;/b&gt;
+
+&lt;img src=&quot;images/reflect_heart.png&quot; class=&quot;centerrounded&quot;&gt;
+&lt;ol&gt;
+  &lt;li&gt;What made you decide to take a break from posting videos?&lt;/li&gt;
+  &lt;li&gt;Does this option make you feel safer?&lt;/li&gt;
+  &lt;li&gt;Who do you feel you could talk to about what happened?&lt;/li&gt;
+  &lt;li&gt;Would talking with this person/people make you feel better/safer?&lt;/li&gt;
+&lt;/ol&gt;
+It can be helpful to take a break from social media every now and then to ground yourself. Deciding to stop using social media is a personal decision and should be based on how being on social media makes you feel. Does being on social media make you happy, do you feel a lot of pressure, do you feel like something is missing? Check-in with yourself to examine whether social media adds anything to your life and re-evaluate your relationship with it. Maybe deleting your account is the best course of action for you at this time, or perhaps it’s applying screen restrictions to limit the amount of time you spend on social media. There is no one right answer, so it can be helpful to talk to someone you trust to figure out what the best options for you may be. 
+
+Remember that you never need to do what somebody else is doing or what they want you to do. You have agency over your actions and body. If something makes you feel uncomfortable or seems a bit weird, listen to your gut and find an adult or peer you trust to help you navigate or exit the situation. You are not alone!</tw-passagedata><tw-passagedata pid="26" name="Take pajama videos down II" tags="Background" position="825,825" size="100,100">You decide to take down any videos in your pajamas. One day, you receive a DM from someone saying ...
 &lt;img src=&quot;images/first_dm.png&quot; class=&quot;centerrounded&quot;&gt;
 The person&#39;s profile pic looks like they are around your age. In their profile bio you see that they wrote the name of a school in your nearby area.
 
